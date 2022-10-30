@@ -1,43 +1,46 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-typedef struct node
+#include <stdio.h>
+#include <stdlib.h>
+struct node
 {
-	int data;
-	struct node *next;
-}node;
+    int data;
+    struct node *next;
+};
 
 int main()
-{	
-	int a , i = 1 , n ,r;     //   i = 0  is also ok....
-	node *p,*q,*start;
-	printf("Enter the number of nodes");
-	scanf("%d",&n);
-	
-	printf("Enter node %d  \n",i);   //  you can also start with i = 0
-	p = (node*)malloc(sizeof(node));
-	scanf("%d",&a);
-	p->data = a;
-	p->next = NULL;
-	start = p; 
-		
-	for(i=2;i<=n;i++)                //if i=0 , then for ( i = 1; i < n; i++ )
-	 	{
-	 		printf("Enter node %d  \n",i);
-		 	q = (node*)malloc(sizeof(node));
-			scanf("%d",&a);
-			q->data = a;
-			q->next = NULL;			 	
-		 	p->next = q;
-		 	p = p->next;		 	
-	 	
-		}
-
-	p = start;
-	while(p!=NULL)
-	{
-		printf("\t %d", p->data);
-		p = p->next;
-	}
-
+{
+    int i, n, item;
+    struct node *p, *q, *head;
+    
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+    
+    printf("Enter the value of head node: ");
+    scanf("%d", item);
+    
+    q = (struct node *)malloc(sizeof(struct node));
+    q->data = item;
+    q->next = NULL;
+    
+    head = q;
+    p = head;
+    
+    for(i = 1; 1 < n; i++)
+    {
+    printf("Enter the value of the next node: ");
+    scanf("%d", item);
+    
+    q = (struct node *)malloc(sizeof(struct node));
+    q->data = item;
+    q->next = NULL;
+    
+    p->next = q; //link the nodes
+    p = p-> next; //jumb to the curent nodes
+    }
+    printf("\n");
+    p = head;
+    while(p != NULL)
+    {
+        printf("%d",p->data);
+        p = p->next;
+    }
 }
